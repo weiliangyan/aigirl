@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">情感AI助手</string>
+    <string name="settings">设置</string>
+    <string name="send">发送</string>
+    <string name="voice_input">语音输入</string>
+    <string name="image_input">图片输入</string>
+    <string name="text_input_hint">输入消息...</string>
+    <string name="listening">正在聆听...</string>
+    <string name="processing">处理中...</string>
+</resources> 

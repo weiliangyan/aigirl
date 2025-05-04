@@ -1,0 +1,25 @@
+default_platform(:android)
+
+platform :android do
+  desc "构建发布版本 APK"
+  lane :build_release do
+    gradle(
+      task: "clean assembleRelease",
+      properties: {
+        "android.injected.signing.store.file" => ENV["KEYSTORE_FILE"],
+        "android.injected.signing.store.password" => ENV["KEYSTORE_PASSWORD"],
+        "android.injected.signing.key.alias" => ENV["KEY_ALIAS"],
+        "android.injected.signing.key.password" => ENV["KEY_PASSWORD"],
+      }
+    )
+  end
+
+  desc "上传到 Firebase App Distribution"
+  lane :upload_to_firebase do
+    firebase_app_distribution(
+      app: ENV["FIREBASE_APP_ID"],
+      groups: "testers",
+      release_notes: "新版本发布"
+    )
+  end
+end 
